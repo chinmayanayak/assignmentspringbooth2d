@@ -133,13 +133,11 @@ public class PersonControllerRestTemplateTest {
 
         verify(mockRepository, times(1)).save(any(PersonDTO.class));
         
-        mockRepository.findAll().forEach(x -> System.out.println(x));
         
         PersonDTO updatePerson = new PersonDTO(1L,"ABC", "nay");
         when(mockRepository.save(any(PersonDTO.class))).thenReturn(updatePerson);
         
-        mockRepository.findAll().forEach(x -> System.out.println(x));
-
+        
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(om.writeValueAsString(updatePerson), headers);
@@ -170,14 +168,5 @@ public class PersonControllerRestTemplateTest {
         verify(mockRepository, times(1)).deleteById(1L);
     }
 
-    private static void printJSON(Object object) {
-        String result;
-        try {
-            result = om.writerWithDefaultPrettyPrinter().writeValueAsString(object);
-            System.out.println(result);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-    }
-
+   
 }

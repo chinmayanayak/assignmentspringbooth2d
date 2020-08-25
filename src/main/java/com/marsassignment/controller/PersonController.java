@@ -51,8 +51,6 @@ public class PersonController {
     @PutMapping("/person/{id}")
     Optional<Object> saveOrUpdate(@RequestBody PersonDTO newPersonDTO, @PathVariable Long id) {
     	
-    	personRepository.findAll().forEach(x -> System.out.println(x));
-    	System.out.println("fooooooooooooooooooo");
     	if(personRepository.existsById(id)) {
 	        return personRepository.findById(id)
 	                .map(x -> {
@@ -68,17 +66,6 @@ public class PersonController {
     	}
     }
 
-    // update author only
-    /*@PatchMapping("/person/{id}")
-    PersonDTO patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
-
-        return personRepository.findById(id)
-                
-                .orElseGet(() -> {
-                    throw new PersonNotFoundException(id);
-                });
-
-    }*/
 
     @DeleteMapping("/person/{id}")
     void deleteBook(@PathVariable Long id) {

@@ -34,16 +34,6 @@ public class StartApplication implements CommandLineRunner {
         personRepository.deleteAllInBatch();
         addressRepository.deleteAllInBatch();
 
-        /*personRepository.save(new PersonDTO("Fname",""));
-        personRepository.save(new PersonDTO("Fname1",""));
-        personRepository.save(new PersonDTO("Fname2",""));
-
-        System.out.println("\nfindAll()");
-        personRepository.findAll().forEach(x -> System.out.println(x));
-
-        System.out.println("\nfindById(1L)");
-        personRepository.findById(1l).ifPresent(x -> System.out.println(x));*/
-
         
 
     }
